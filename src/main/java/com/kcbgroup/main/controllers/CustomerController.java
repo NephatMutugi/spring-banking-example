@@ -57,4 +57,13 @@ public class CustomerController {
                 entityModel.add(linkBuilder.withRel("all-customers"));
         return entityModel;
     }
+
+    // Update Customer
+    //TODO Finalize on put mapping
+    @PutMapping("/customers/")
+    public Customer updateCustomer(@RequestBody Customer customer){
+        customerRepository.save(customer);
+        return customer;
+    }
+
 }
