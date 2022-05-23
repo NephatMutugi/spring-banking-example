@@ -3,6 +3,8 @@ package com.kcbgroup.main.controllers;
 import com.kcbgroup.main.exceptions.UserNotFoundException;
 import com.kcbgroup.main.models.Customer;
 import com.kcbgroup.main.repos.CustomerRepository;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -42,10 +44,17 @@ public class CustomerController {
 
     // Return one customer
     @GetMapping("/customers/{id}")
-    public Customer returnCustomer(@PathVariable int id){
+    public EntityModel<Customer> returnCustomer(@PathVariable int id){
         Optional<Customer> customer = customerRepository.findById(id);
         if (!customer.isPresent()){
             throw new UserNotFoundException("id -> " + id);
         }
+
+        EntityModel<Customer> entityModel = EntityModel.of(customer.get());
+        WebMvcLinkBuilder linkBuilder = WebMvcLinkBuilder.linkTo(
+                WebMvcLinkBuilder.methodOn(this.getClass())
+                        .customerList());
+                entityModel.add(linkBuilder.withRel("all-customers"));
+        return entityModel;
     }
 }
