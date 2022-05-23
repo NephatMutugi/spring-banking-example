@@ -13,26 +13,27 @@ public class Customer {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(insertable = false)
 	private int CID;
 	
 	@Column
-	private String FIRST_NAME;
+	private String first_name;
 	@Column
-	private String LAST_NAME;
+	private String last_name;
 	@Column
-	private String KRA_PIN;
+	private String kra_pin;
 	@Column
-	private String ADDRESS;
+	private String address;
 
 	public Customer() {
 
 	}
 
-	public Customer(String FIRST_NAME, String LAST_NAME, String KRA_PIN, String ADDRESS) {
-		this.FIRST_NAME = FIRST_NAME;
-		this.LAST_NAME = LAST_NAME;
-		this.KRA_PIN = KRA_PIN;
-		this.ADDRESS = ADDRESS;
+	public Customer(String first_name, String last_name, String kra_pin, String address) {
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.kra_pin = kra_pin;
+		this.address = address;
 	}
 
 	public int getCID() {
@@ -43,35 +44,35 @@ public class Customer {
 		this.CID = CID;
 	}
 
-	public String getFIRST_NAME() {
-		return FIRST_NAME;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setFIRST_NAME(String FIRST_NAME) {
-		this.FIRST_NAME = FIRST_NAME;
+	public void setFirst_name(String FIRST_NAME) {
+		this.first_name = FIRST_NAME;
 	}
 
-	public String getLAST_NAME() {
-		return LAST_NAME;
+	public String getLast_name() {
+		return last_name;
 	}
 
-	public void setLAST_NAME(String LAST_NAME) {
-		this.LAST_NAME = LAST_NAME;
+	public void setLast_name(String LAST_NAME) {
+		this.last_name = LAST_NAME;
 	}
 
-	public String getKRA_PIN() {
-		return KRA_PIN;
+	public String getKra_pin() {
+		return kra_pin;
 	}
 
-	public void setKRA_PIN(String KRA_PIN) {
-		this.KRA_PIN = KRA_PIN;
+	public void setKra_pin(String KRA_PIN) {
+		this.kra_pin = KRA_PIN;
 	}
 
-	public String getADDRESS() {
-		return ADDRESS;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setADDRESS(String ADDRESS) {
-		this.ADDRESS = ADDRESS;
+	public void setAddress(String ADDRESS) {
+		this.address = ADDRESS;
 	}
 }
