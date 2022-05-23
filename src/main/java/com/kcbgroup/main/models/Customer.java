@@ -20,16 +20,19 @@ public class Customer {
 	@Column
 	private String LAST_NAME;
 	@Column
+	private String KRA_PIN;
+	@Column
 	private String ADDRESS;
-
-	public Customer(String FIRST_NAME, String LAST_NAME, String ADDRESS) {
-		this.FIRST_NAME = FIRST_NAME;
-		this.LAST_NAME = LAST_NAME;
-		this.ADDRESS = ADDRESS;
-	}
 
 	public Customer() {
 
+	}
+
+	public Customer(String FIRST_NAME, String LAST_NAME, String KRA_PIN, String ADDRESS) {
+		this.FIRST_NAME = FIRST_NAME;
+		this.LAST_NAME = LAST_NAME;
+		this.KRA_PIN = KRA_PIN;
+		this.ADDRESS = ADDRESS;
 	}
 
 	public int getCID() {
@@ -54,6 +57,14 @@ public class Customer {
 
 	public void setLAST_NAME(String LAST_NAME) {
 		this.LAST_NAME = LAST_NAME;
+	}
+
+	public String getKRA_PIN() {
+		return KRA_PIN;
+	}
+
+	public void setKRA_PIN(String KRA_PIN) {
+		this.KRA_PIN = KRA_PIN;
 	}
 
 	public String getADDRESS() {
