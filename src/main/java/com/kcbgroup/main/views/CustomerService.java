@@ -1,11 +1,13 @@
 package com.kcbgroup.main.views;
 
 import com.kcbgroup.main.models.Customer;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Component
 public class CustomerService {
     private static final List<Customer> customerList = new ArrayList<>();
 
@@ -37,4 +39,27 @@ public class CustomerService {
         return customer;
     }
 
+
+    // TODO FINISH UP ON PUT MAPPING!!!
+    public String updateCustomer(Customer customer) {
+
+        boolean isPresent = false;
+        for (Customer currentCustomer : customerList){
+            if (currentCustomer.getCID() == customer.getCID()){
+                isPresent = true;
+                currentCustomer.setCID(customer.getCID());
+                currentCustomer.setAddress(customer.getAddress());
+                currentCustomer.setFirst_name(customer.getFirst_name());
+                currentCustomer.setLast_name(customer.getLast_name());
+                currentCustomer.setKra_pin(customer.getKra_pin());
+            }
+        }
+
+        if (!isPresent){
+            customerList.add(customer);
+            return "Customer updated successfully";
+        }
+
+        return "Customer updated successfully";
+    }
 }

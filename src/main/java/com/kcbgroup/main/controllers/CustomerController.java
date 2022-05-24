@@ -3,6 +3,7 @@ package com.kcbgroup.main.controllers;
 import com.kcbgroup.main.exceptions.UserNotFoundException;
 import com.kcbgroup.main.models.Customer;
 import com.kcbgroup.main.repos.CustomerRepository;
+import com.kcbgroup.main.views.CustomerService;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,12 @@ import java.util.Optional;
 public class CustomerController {
     private final CustomerRepository customerRepository;
 
+    private final CustomerService customerService;
 
-    public CustomerController(CustomerRepository customerRepository) {
+
+    public CustomerController(CustomerRepository customerRepository, CustomerService customerService) {
         this.customerRepository = customerRepository;
+        this.customerService = customerService;
     }
 
     @GetMapping("/customers/")
@@ -60,12 +64,10 @@ public class CustomerController {
 
     // Update Customer
     //TODO Finalize on put mapping
-    @PutMapping("/customers/")
-    public Customer updateCustomer(@RequestBody Customer customer){
-        customerRepository.save(customer);
-        return customer;
+    @PutMapping("/customers/update/")
+    public String updateCustomer(@RequestBody Customer customer){
+        return customerService.updateCustomer(customer);
+
     }
-
-
 
 }
