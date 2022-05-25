@@ -1,6 +1,7 @@
 package com.kcbgroup.main.controllers;
 
 import com.kcbgroup.main.exceptions.UserNotFoundException;
+import com.kcbgroup.main.jpa.CustomerJpaRepo;
 import com.kcbgroup.main.models.Customer;
 import com.kcbgroup.main.repos.CustomerRepository;
 import com.kcbgroup.main.views.CustomerService;
@@ -20,16 +21,20 @@ public class CustomerController {
     private final CustomerRepository customerRepository;
 
     private final CustomerService customerService;
+    private final CustomerJpaRepo customerJpaRepo;
 
 
-    public CustomerController(CustomerRepository customerRepository, CustomerService customerService) {
+    public CustomerController(CustomerRepository customerRepository, CustomerService customerService, CustomerJpaRepo customerJpaRepo) {
         this.customerRepository = customerRepository;
         this.customerService = customerService;
+        this.customerJpaRepo = customerJpaRepo;
     }
 
+
+    // USES CustomerJpaRepo.java
     @GetMapping("/customers/")
     public List<Customer> customerList(){
-        return customerRepository.findAll();
+        return customerJpaRepo.findAll();
     }
 
     // Add a customer

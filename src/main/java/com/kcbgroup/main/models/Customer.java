@@ -1,5 +1,7 @@
 package com.kcbgroup.main.models;
 
+import org.hibernate.annotations.NamedQuery;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,8 @@ import javax.persistence.Table;
  * This can be ranked as a bean*/
 @Entity
 @Table
+@NamedQuery(name = "findAllCustomers", query = "SELECT c FROM Customer c")
+@NamedQuery(name = "findFirstName", query = "SELECT c.first_name, c.last_name, c.kra_pin FROM Customer c")
 public class Customer {
 	
 	@Id
