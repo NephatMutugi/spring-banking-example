@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/** @Author Nephat Mutugi
+ * This can be ranked as a bean*/
 @Entity
 @Table
 public class Customer {
@@ -74,5 +76,16 @@ public class Customer {
 
 	public void setAddress(String ADDRESS) {
 		this.address = ADDRESS;
+	}
+
+	@Override
+	public String toString() {
+		return "\nCustomer{" +
+				"CID=" + CID +
+				", first_name='" + first_name + '\'' +
+				", last_name='" + last_name + '\'' +
+				", kra_pin='" + kra_pin + '\'' +
+				", address='" + address + '\'' +
+				'}';
 	}
 }
